@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phantom AI | Enterprise-Grade Local AI Infrastructure</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0f;
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: #818cf8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(129, 140, 248, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, rgba(129, 140, 248, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(129, 140, 248, 0.1);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #a78bfa;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #a1a1aa;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-image {
+            margin-top: 4rem;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Features */
+        .features {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0a0a0f 0%, #0f0f17 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-header p {
+            color: #71717a;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(129, 140, 248, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.2) 0%, rgba(192, 132, 252, 0.2) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: #71717a;
+            font-size: 0.95rem;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 8rem 5%;
+            background: #0a0a0f;
+        }
+
+        .security-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .security-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .security-text p {
+            color: #71717a;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .security-list {
+            list-style: none;
+        }
+
+        .security-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .security-list .check {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .security-image {
+            position: relative;
+        }
+
+        .security-image img {
+            width: 100%;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Infrastructure */
+        .infrastructure {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0f0f17 0%, #0a0a0f 100%);
+        }
+
+        .infra-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .infra-card {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.05) 0%, rgba(192, 132, 252, 0.05) 100%);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .infra-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .infra-card p {
+            color: #71717a;
+            margin-bottom: 1.5rem;
+        }
+
+        .infra-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Team */
+        .team {
+            padding: 8rem 5%;
+            background: #0a0a0f;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-member {
+            text-align: center;
+            max-width: 280px;
+        }
+
+        .team-member img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 3px solid rgba(129, 140, 248, 0.3);
+            filter: grayscale(20%);
+        }
+
+        .team-member h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .team-member .role {
+            color: #818cf8;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-member p {
+            color: #71717a;
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta {
+            padding: 8rem 5%;
+            text-align: center;
+            background: linear-gradient(180deg, #0a0a0f 0%, #0f0f17 100%);
+            position: relative;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center bottom, rgba(129, 140, 248, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
+            color: #71717a;
+            font-size: 1.2rem;
+            max-width: 500px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: #52525b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .security-content {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">Phantom<span>AI</span></div>
+        <ul>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#infrastructure">Infrastructure</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary">Request Demo</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔒 SOC 2 Type II Compliant</div>
+            <h1>Enterprise AI That <span class="gradient-text">Never Leaves Your Building</span></h1>
+            <p>Deploy powerful AI assistants on your infrastructure. Your data stays yours. Zero external API calls. Complete control.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Schedule Demo</a>
+                <a href="#security" class="btn btn-outline">Security Overview →</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" alt="Secure Data Center">
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>AI That Works <span class="gradient-text">The Way You Work</span></h2>
+            <p>Purpose-built for enterprises that can't compromise on security, compliance, or control.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏢</div>
+                <h3>100% On-Premise</h3>
+                <p>Run everything in your data center. No data leaves your network. No external dependencies. Complete air-gap capability.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Zero Trust Architecture</h3>
+                <p>Every request authenticated. Every action logged. Granular RBAC controls. Credential isolation with hardware security modules.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <h3>Immutable Audit Trails</h3>
+                <p>Complete visibility into every AI decision. Tamper-proof logs. Export-ready for compliance audits. Full reasoning transparency.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Approval Workflows</h3>
+                <p>Define authority levels for every action type. Multi-party approval for sensitive operations. Human-in-the-loop by design.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Instant Revocation</h3>
+                <p>One-click access termination across all systems. Session invalidation in milliseconds. Security team dashboards with real-time controls.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🧠</div>
+                <h3>Your Models, Your Rules</h3>
+                <p>Bring your own models or use our optimized deployments. Fine-tune on your data without it ever leaving your environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="security" id="security">
+        <div class="security-content">
+            <div class="security-text">
+                <h2>Security Isn't a Feature. <span class="gradient-text">It's the Foundation.</span></h2>
+                <p>Built from the ground up for organizations where data sovereignty isn't optional.</p>
+                <ul class="security-list">
+                    <li><span class="check">✓</span> End-to-end encryption at rest and in transit (AES-256, TLS 1.3)</li>
+                    <li><span class="check">✓</span> Hardware Security Module (HSM) integration for credential management</li>
+                    <li><span class="check">✓</span> Air-gapped deployment options for classified environments</li>
+                    <li><span class="check">✓</span> SAML/OIDC SSO with your existing identity provider</li>
+                    <li><span class="check">✓</span> SOC 2 Type II, HIPAA, FedRAMP ready architectures</li>
+                    <li><span class="check">✓</span> Penetration tested quarterly by independent security firms</li>
+                </ul>
+            </div>
+            <div class="security-image">
+                <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80" alt="Security Infrastructure">
+            </div>
+        </div>
+    </section>
+
+    <section class="infrastructure" id="infrastructure">
+        <div class="section-header">
+            <h2>Deploy <span class="gradient-text">Your Way</span></h2>
+            <p>Full flexibility to match your security posture and infrastructure preferences.</p>
+        </div>
+        <div class="infra-cards">
+            <div class="infra-card">
+                <img src="https://img.icons8.com/fluency/96/server.png" alt="On-Premise">
+                <h3>Fully On-Premise</h3>
+                <p>Deploy on your hardware. Your data center. Your rules. Support for NVIDIA, AMD, and Apple Silicon clusters.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+            <div class="infra-card">
+                <img src="https://img.icons8.com/fluency/96/amazon-web-services.png" alt="AWS Bedrock">
+                <h3>AWS Bedrock</h3>
+                <p>Leverage Amazon's secure AI infrastructure within your VPC. Private endpoints. No data sharing. Full AWS compliance inheritance.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="team" id="team">
+        <div class="section-header">
+            <h2>Built by <span class="gradient-text">Industry Veterans</span></h2>
+            <p>Decades of combined experience in enterprise software, AI, and security.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://media.licdn.com/dms/image/v2/C5603AQHjQRgh2lIEeg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1517535375015?e=1743638400&v=beta&t=Xs8z0uyiN50AvKQ2XBxjhOYKlQ9oFQEz8Y7m3Xwx6Bg" alt="David Tedesco">
+                <h3>David Tedesco</h3>
+                <div class="role">Co-Founder & CEO</div>
+                <p>Founder & CEO of Outlier. Harvard Business School. 25+ years building companies across healthcare, aerospace, and technology.</p>
+            </div>
+            <div class="team-member">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQHKbGGwRQXgng/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1700757212286?e=1743638400&v=beta&t=AJ5t-sTq4gG9nFp0_5tqUPLqg3vScWKHpCJzPHpXNR8" alt="Louis Aaron">
+                <h3>Louis Aaron</h3>
+                <div class="role">Co-Founder & CTO</div>
+                <p>Founder of BoreDM. Princeton CS & Operations Research. Former Boring Company, BCG. Built enterprise SaaS trusted by state DOTs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>Ready to Take <span class="gradient-text">Control</span>?</h2>
+        <p>See how PhantomAI can transform your enterprise while keeping your data exactly where it belongs.</p>
+        <a href="mailto:hello@phantom.ai" class="btn btn-primary">Request a Demo</a>
+    </section>
+
+    <footer>
+        <p>© 2026 PhantomAI, Inc. All rights reserved. | <a href="#" style="color: #71717a;">Privacy</a> | <a href="#" style="color: #71717a;">Terms</a> | <a href="#" style="color: #71717a;">Security</a></p>
+    </footer>
+</body>
+</html>
