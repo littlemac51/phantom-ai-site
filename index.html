@@ -522,7 +522,6 @@
         <div class="logo">Phantom<span>AI</span></div>
         <ul>
             <li><a href="#benefits">Benefits</a></li>
-            <li><a href="#features">Features</a></li>
             <li><a href="#security">Security</a></li>
             <li><a href="#infrastructure">Infrastructure</a></li>
             <li><a href="#team">Team</a></li>
@@ -530,7 +529,7 @@
         <a href="#contact" class="btn btn-primary">Request Demo</a>
     </nav>
 
-    <section class="hero">
+        <section class="hero">
         <div class="hero-content">
             <div class="hero-badge">🔒 SOC 2 Type II Compliant</div>
             <h1>Enterprise AI That <span class="gradient-text">Never Leaves Your Building</span></h1>
@@ -545,45 +544,6 @@
         </div>
     </section>
 
-    <section class="features" id="features">
-        <div class="section-header">
-            <h2>AI That Works <span class="gradient-text">The Way You Work</span></h2>
-            <p>Purpose-built for enterprises that can't compromise on security, compliance, or control.</p>
-        </div>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🏢</div>
-                <h3>100% On-Premise</h3>
-                <p>Run everything in your data center. No data leaves your network. No external dependencies. Complete air-gap capability.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔐</div>
-                <h3>Zero Trust Architecture</h3>
-                <p>Every request authenticated. Every action logged. Granular RBAC controls. Credential isolation with hardware security modules.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📋</div>
-                <h3>Immutable Audit Trails</h3>
-                <p>Complete visibility into every AI decision. Tamper-proof logs. Export-ready for compliance audits. Full reasoning transparency.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Approval Workflows</h3>
-                <p>Define authority levels for every action type. Multi-party approval for sensitive operations. Human-in-the-loop by design.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Instant Revocation</h3>
-                <p>One-click access termination across all systems. Session invalidation in milliseconds. Security team dashboards with real-time controls.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🧠</div>
-                <h3>Your Models, Your Rules</h3>
-                <p>Bring your own models or use our optimized deployments. Fine-tune on your data without it ever leaving your environment.</p>
-            </div>
-        </div>
-    </section>
-
     <section class="benefits" id="benefits">
         <div class="section-header">
             <h2>Transform How Your <span class="gradient-text">Organization Works</span></h2>
@@ -593,6 +553,20 @@
             <div class="benefit-block">
                 <div class="benefit-text">
                     <div class="benefit-number">01</div>
+                    <h3>Your Data Stays Yours</h3>
+                    <p class="benefit-headline">Complete privacy. Zero compromises.</p>
+                    <p>In an age of data breaches and AI companies training on your conversations, we take a different approach: your data never leaves your control. Deploy on your own infrastructure — whether on-premise servers, private cloud, or air-gapped environments. No data is sent to external APIs. No training on your information. No third-party access. Ever.</p>
+                    <ul class="benefit-list">
+                        <li>100% on-premise or private cloud deployment</li>
+                        <li>Zero external API calls for AI processing</li>
+                        <li>SOC 2, HIPAA, and FedRAMP ready</li>
+                        <li>Complete audit trails for compliance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-block reverse">
+                <div class="benefit-text">
+                    <div class="benefit-number">02</div>
                     <h3>Intelligent Data Access</h3>
                     <p class="benefit-headline">Ask questions. Get answers. In plain English.</p>
                     <p>Imagine every employee having instant access to your corporate knowledge — financial reports, operational data, customer history, internal docs — through a simple chat interface. No more hunting through SharePoint. No more "who knows where that file is?" Start with one system or connect everything. Your AI understands context, follows permissions, and delivers precisely what's needed.</p>
@@ -604,9 +578,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="benefit-block reverse">
+            <div class="benefit-block">
                 <div class="benefit-text">
-                    <div class="benefit-number">02</div>
+                    <div class="benefit-number">03</div>
                     <h3>Agents That Act</h3>
                     <p class="benefit-headline">Beyond chat. AI that actually does the work.</p>
                     <p>Traditional chatbots answer questions. Agents complete tasks. They draft reports from your data. They prepare meeting briefs by pulling relevant context. They monitor systems and alert the right people. They don't just understand your business — they participate in it. With configurable approval workflows, you stay in control while multiplying what your team can accomplish.</p>
@@ -618,9 +592,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="benefit-block">
+            <div class="benefit-block reverse">
                 <div class="benefit-text">
-                    <div class="benefit-number">03</div>
+                    <div class="benefit-number">04</div>
                     <h3>A Digital Assistant for Everyone</h3>
                     <p class="benefit-headline">Every employee. Personal AI. Focused productivity.</p>
                     <p>What if every person in your organization had a brilliant, tireless assistant who knew the company inside out? One that handles the busywork so humans can focus on what matters most — creative problem-solving, relationship building, strategic thinking. Your top performers didn't get where they are by formatting spreadsheets. Give everyone that same leverage.</p>
@@ -662,14 +636,14 @@
         </div>
         <div class="infra-cards">
             <div class="infra-card">
-                <img src="https://img.icons8.com/fluency/96/server.png" alt="On-Premise">
+                <img src="images/server.png" alt="On-Premise">
                 <h3>Fully On-Premise</h3>
                 <p>Deploy on your hardware. Your data center. Your rules. Support for NVIDIA, AMD, and Apple Silicon clusters.</p>
                 <a href="#" class="btn btn-outline">Learn More</a>
             </div>
             <div class="infra-card">
-                <img src="https://img.icons8.com/fluency/96/amazon-web-services.png" alt="AWS Bedrock">
-                <h3>AWS Bedrock</h3>
+                <img src="images/aws.png" alt="Amazon AWS Bedrock">
+                <h3>Amazon AWS Bedrock</h3>
                 <p>Leverage Amazon's secure AI infrastructure within your VPC. Private endpoints. No data sharing. Full AWS compliance inheritance.</p>
                 <a href="#" class="btn btn-outline">Learn More</a>
             </div>
