@@ -241,6 +241,82 @@
             font-size: 0.95rem;
         }
 
+        /* Benefits Section */
+        .benefits {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0f0f17 0%, #0a0a0f 100%);
+        }
+
+        .benefits-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .benefit-block {
+            margin-bottom: 5rem;
+        }
+
+        .benefit-block:last-child {
+            margin-bottom: 0;
+        }
+
+        .benefit-text {
+            position: relative;
+        }
+
+        .benefit-number {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.2) 0%, rgba(192, 132, 252, 0.2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.5px;
+        }
+
+        .benefit-headline {
+            font-size: 1.25rem;
+            color: #a78bfa;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .benefit-text > p {
+            color: #a1a1aa;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #e4e4e7;
+            font-size: 0.95rem;
+        }
+
+        .benefit-list li::before {
+            content: '→';
+            color: #818cf8;
+            font-weight: bold;
+        }
+
         /* Security Section */
         .security {
             padding: 8rem 5%;
@@ -445,6 +521,7 @@
     <nav>
         <div class="logo">Phantom<span>AI</span></div>
         <ul>
+            <li><a href="#benefits">Benefits</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#security">Security</a></li>
             <li><a href="#infrastructure">Infrastructure</a></li>
@@ -457,7 +534,7 @@
         <div class="hero-content">
             <div class="hero-badge">🔒 SOC 2 Type II Compliant</div>
             <h1>Enterprise AI That <span class="gradient-text">Never Leaves Your Building</span></h1>
-            <p>Deploy powerful AI assistants on your infrastructure. Your data stays yours. Zero external API calls. Complete control.</p>
+            <p>Give every employee a digital assistant that knows your business inside out. Query all your corporate data in plain English. Automate the busywork. Keep everything on your infrastructure.</p>
             <div class="hero-buttons">
                 <a href="#contact" class="btn btn-primary">Schedule Demo</a>
                 <a href="#security" class="btn btn-outline">Security Overview →</a>
@@ -503,6 +580,57 @@
                 <div class="feature-icon">🧠</div>
                 <h3>Your Models, Your Rules</h3>
                 <p>Bring your own models or use our optimized deployments. Fine-tune on your data without it ever leaving your environment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits" id="benefits">
+        <div class="section-header">
+            <h2>Transform How Your <span class="gradient-text">Organization Works</span></h2>
+            <p>Beyond security — real productivity gains that compound across your entire workforce.</p>
+        </div>
+        <div class="benefits-content">
+            <div class="benefit-block">
+                <div class="benefit-text">
+                    <div class="benefit-number">01</div>
+                    <h3>Intelligent Data Access</h3>
+                    <p class="benefit-headline">Ask questions. Get answers. In plain English.</p>
+                    <p>Imagine every employee having instant access to your corporate knowledge — financial reports, operational data, customer history, internal docs — through a simple chat interface. No more hunting through SharePoint. No more "who knows where that file is?" Start with one system or connect everything. Your AI understands context, follows permissions, and delivers precisely what's needed.</p>
+                    <ul class="benefit-list">
+                        <li>Query structured databases with natural language</li>
+                        <li>Search across documents, emails, and knowledge bases</li>
+                        <li>Respect existing access controls and permissions</li>
+                        <li>Start narrow, expand as trust builds</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-block reverse">
+                <div class="benefit-text">
+                    <div class="benefit-number">02</div>
+                    <h3>Agents That Act</h3>
+                    <p class="benefit-headline">Beyond chat. AI that actually does the work.</p>
+                    <p>Traditional chatbots answer questions. Agents complete tasks. They draft reports from your data. They prepare meeting briefs by pulling relevant context. They monitor systems and alert the right people. They don't just understand your business — they participate in it. With configurable approval workflows, you stay in control while multiplying what your team can accomplish.</p>
+                    <ul class="benefit-list">
+                        <li>Automate repetitive knowledge work</li>
+                        <li>Connect to your existing tools and systems</li>
+                        <li>Multi-step workflows with human checkpoints</li>
+                        <li>Learn and improve from every interaction</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-block">
+                <div class="benefit-text">
+                    <div class="benefit-number">03</div>
+                    <h3>A Digital Assistant for Everyone</h3>
+                    <p class="benefit-headline">Every employee. Personal AI. Focused productivity.</p>
+                    <p>What if every person in your organization had a brilliant, tireless assistant who knew the company inside out? One that handles the busywork so humans can focus on what matters most — creative problem-solving, relationship building, strategic thinking. Your top performers didn't get where they are by formatting spreadsheets. Give everyone that same leverage.</p>
+                    <ul class="benefit-list">
+                        <li>Personalized to each role and workflow</li>
+                        <li>Handles scheduling, prep work, and follow-ups</li>
+                        <li>Surfaces relevant information proactively</li>
+                        <li>Scales expertise across the organization</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
