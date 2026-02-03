@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phantom AI | Enterprise AI Infrastructure</title>
+    <title>Phantom AI | Enterprise-Grade Local AI Infrastructure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -17,7 +17,14 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #0a0a0f;
             color: #e4e4e7;
-            line-height: 1.7;
+            line-height: 1.6;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #f472b6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         nav {
@@ -28,7 +35,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(10, 10, 15, 0.95);
+            background: rgba(10, 10, 15, 0.8);
             backdrop-filter: blur(20px);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -38,7 +45,10 @@
             font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            color: #fff;
+        }
+
+        .logo span {
+            color: #818cf8;
         }
 
         nav ul {
@@ -61,7 +71,7 @@
 
         .btn {
             padding: 0.75rem 1.5rem;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: 600;
             font-size: 0.9rem;
             cursor: pointer;
@@ -70,172 +80,351 @@
         }
 
         .btn-primary {
-            background: #fff;
-            color: #0a0a0f;
+            background: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
+            color: white;
             border: none;
         }
 
         .btn-primary:hover {
-            background: #e4e4e7;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(129, 140, 248, 0.3);
         }
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 5%;
+        .btn-outline {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
         }
 
         /* Hero */
         .hero {
-            padding: 12rem 5% 6rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 5% 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center top, rgba(129, 140, 248, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-content {
             max-width: 900px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(129, 140, 248, 0.1);
+            border: 1px solid rgba(129, 140, 248, 0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #a78bfa;
+            margin-bottom: 2rem;
         }
 
         .hero h1 {
-            font-size: 2.75rem;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 2rem;
-            letter-spacing: -1px;
-            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
         }
 
-        .hero-intro {
-            font-size: 1.15rem;
+        .hero p {
+            font-size: 1.25rem;
             color: #a1a1aa;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
         }
 
-        .hero-cta {
+        .hero-buttons {
             display: flex;
             gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        /* Sections */
-        section {
-            padding: 5rem 5%;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .hero-image {
+            margin-top: 4rem;
+            position: relative;
         }
 
-        section h2 {
-            font-size: 1.75rem;
+        .hero-image img {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Features */
+        .features {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0a0a0f 0%, #0f0f17 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
         }
 
-        section h3 {
+        .section-header p {
+            color: #71717a;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(129, 140, 248, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.2) 0%, rgba(192, 132, 252, 0.2) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 1rem;
-            color: #fff;
+            margin-bottom: 0.75rem;
         }
 
-        .section-content {
+        .feature-card p {
+            color: #71717a;
+            font-size: 0.95rem;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0f0f17 0%, #0a0a0f 100%);
+        }
+
+        .benefits-content {
             max-width: 900px;
             margin: 0 auto;
         }
 
-        .section-content p {
-            color: #a1a1aa;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
+        .benefit-block {
+            margin-bottom: 5rem;
         }
 
-        .section-content ul {
-            color: #a1a1aa;
-            margin-bottom: 1.5rem;
-            padding-left: 1.5rem;
+        .benefit-block:last-child {
+            margin-bottom: 0;
         }
 
-        .section-content li {
+        .benefit-text {
+            position: relative;
+        }
+
+        .benefit-number {
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.2) 0%, rgba(192, 132, 252, 0.2) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-text h3 {
+            font-size: 2rem;
+            font-weight: 700;
             margin-bottom: 0.75rem;
-            font-size: 1.05rem;
+            letter-spacing: -0.5px;
         }
 
-        /* Subsections */
-        .subsection {
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        .benefit-headline {
+            font-size: 1.25rem;
+            color: #a78bfa;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
         }
 
-        .subsection:first-child {
-            margin-top: 0;
-            padding-top: 0;
-            border-top: none;
-        }
-
-        /* Use Cases Grid */
-        .use-cases {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .use-case {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 2rem;
-        }
-
-        .use-case h4 {
+        .benefit-text > p {
+            color: #a1a1aa;
             font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: #fff;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
         }
 
-        .use-case p {
+        .benefit-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .benefit-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #e4e4e7;
+            font-size: 0.95rem;
+        }
+
+        .benefit-list li::before {
+            content: '→';
+            color: #818cf8;
+            font-weight: bold;
+        }
+
+        /* Security Section */
+        .security {
+            padding: 8rem 5%;
+            background: #0a0a0f;
+        }
+
+        .security-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .security-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .security-text p {
             color: #71717a;
-            font-size: 0.95rem;
-            margin: 0;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
         }
 
-        /* Comparison Table */
-        .comparison {
-            margin-top: 2rem;
-            overflow-x: auto;
+        .security-list {
+            list-style: none;
         }
 
-        .comparison table {
+        .security-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            font-size: 1rem;
+        }
+
+        .security-list .check {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .security-image {
+            position: relative;
+        }
+
+        .security-image img {
             width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .comparison th,
-        .comparison td {
-            padding: 1rem 1.25rem;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* Infrastructure */
+        .infrastructure {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, #0f0f17 0%, #0a0a0f 100%);
         }
 
-        .comparison th {
-            color: #fff;
+        .infra-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .infra-card {
+            background: linear-gradient(135deg, rgba(129, 140, 248, 0.05) 0%, rgba(192, 132, 252, 0.05) 100%);
+            border: 1px solid rgba(129, 140, 248, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .infra-card h3 {
+            font-size: 1.5rem;
             font-weight: 600;
-            background: rgba(255, 255, 255, 0.02);
+            margin-bottom: 1rem;
         }
 
-        .comparison td {
-            color: #a1a1aa;
+        .infra-card p {
+            color: #71717a;
+            margin-bottom: 1.5rem;
         }
 
-        .comparison tr:last-child td {
-            border-bottom: none;
+        .infra-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
         }
 
         /* Team */
+        .team {
+            padding: 8rem 5%;
+            background: #0a0a0f;
+        }
+
         .team-grid {
             display: flex;
             justify-content: center;
             gap: 4rem;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .team-member {
@@ -244,265 +433,252 @@
         }
 
         .team-member img {
-            width: 140px;
-            height: 140px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 1.25rem;
-            filter: grayscale(30%);
+            margin-bottom: 1.5rem;
+            border: 3px solid rgba(129, 140, 248, 0.3);
+            filter: grayscale(20%);
         }
 
-        .team-member h4 {
-            font-size: 1.1rem;
+        .team-member h3 {
+            font-size: 1.25rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
-            color: #fff;
         }
 
         .team-member .role {
-            color: #71717a;
+            color: #818cf8;
             font-size: 0.9rem;
             margin-bottom: 0.75rem;
         }
 
         .team-member p {
-            color: #52525b;
-            font-size: 0.85rem;
+            color: #71717a;
+            font-size: 0.9rem;
         }
 
         /* CTA */
-        .cta-section {
-            padding: 5rem 5%;
+        .cta {
+            padding: 8rem 5%;
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            background: linear-gradient(180deg, #0a0a0f 0%, #0f0f17 100%);
+            position: relative;
         }
 
-        .cta-section h2 {
-            margin-bottom: 1rem;
+        .cta::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150%;
+            height: 100%;
+            background: radial-gradient(ellipse at center bottom, rgba(129, 140, 248, 0.1) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        .cta-section p {
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .cta p {
             color: #71717a;
+            font-size: 1.2rem;
             max-width: 500px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 2.5rem;
         }
 
         /* Footer */
         footer {
-            padding: 2rem 5%;
+            padding: 3rem 5%;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
             color: #52525b;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
         }
 
         @media (max-width: 768px) {
+            .security-content {
+                grid-template-columns: 1fr;
+            }
+            
             nav ul {
                 display: none;
             }
             
             .hero h1 {
-                font-size: 2rem;
-            }
-
-            .use-cases {
-                grid-template-columns: 1fr;
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="logo">Phantom AI</div>
+        <div class="logo">Phantom<span>AI</span></div>
         <ul>
-            <li><a href="#architecture">Architecture</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#deployment">Deployment</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#security">Security</a></li>
+            <li><a href="#infrastructure">Infrastructure</a></li>
             <li><a href="#team">Team</a></li>
         </ul>
-        <a href="#contact" class="btn btn-primary">Request Briefing</a>
+        <a href="#contact" class="btn btn-primary">Request Demo</a>
     </nav>
 
-    <section class="hero">
-        <h1>Enterprise AI infrastructure that operates entirely within your security boundary.</h1>
-        <p class="hero-intro">
-            Phantom AI is an on-premise AI platform that provides organization-wide conversational intelligence and autonomous agent capabilities without external dependencies. All data, inference, and control remain inside your infrastructure. No customer data is transmitted externally. No models are trained on your information. Every action is governed, logged, and auditable.
-        </p>
-        <p class="hero-intro">
-            This is not a productivity tool. It is infrastructure designed to become part of your organization's core operating stack—enabling every employee to leverage AI capabilities while maintaining the governance, security, and control that enterprise operations require.
-        </p>
-        <div class="hero-cta">
-            <a href="#contact" class="btn btn-primary">Request Technical Briefing</a>
-        </div>
-    </section>
-
-    <section id="architecture">
-        <div class="section-content">
-            <h2>Architecture & Trust Model</h2>
-            
-            <p>
-                Phantom AI deploys as a self-contained system within customer-controlled infrastructure—on-premise data centers, private cloud environments, or air-gapped networks. The platform consists of three primary layers: an inference layer running large language models locally, an orchestration layer managing agent workflows and system integrations, and a governance layer enforcing access controls, audit logging, and policy constraints.
-            </p>
-
-            <div class="subsection">
-                <h3>Data Sovereignty</h3>
-                <p>
-                    All processing occurs within your environment. Queries, responses, documents, and operational data never leave your security boundary. There is no telemetry, no external API calls for inference, and no mechanism by which customer data could be transmitted to Phantom AI or any third party. Model weights are deployed locally and are not updated or modified based on customer usage.
-                </p>
+        <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🔒 SOC 2 Type II Compliant</div>
+            <h1>Enterprise AI That <span class="gradient-text">Never Leaves Your Building</span></h1>
+            <p>Give every employee a digital assistant that knows your business inside out. Query all your corporate data in plain English. Automate the busywork. Keep everything on your infrastructure.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Schedule Demo</a>
+                <a href="#security" class="btn btn-outline">Security Overview →</a>
             </div>
-
-            <div class="subsection">
-                <h3>Governance & Auditability</h3>
-                <p>
-                    Every interaction with the system—user queries, agent actions, data retrievals, and system modifications—is logged with full context including user identity, timestamp, input, output, and any tools or data sources accessed. Logs are stored in customer-controlled infrastructure and can be integrated with existing SIEM systems. Role-based access controls determine what data each user can query, what actions agents can perform on their behalf, and what systems can be accessed.
-                </p>
-            </div>
-
-            <div class="subsection">
-                <h3>Separation of Concerns</h3>
-                <p>
-                    The architecture maintains strict separation between reasoning, execution, and data layers. The language model generates plans and responses but does not directly access systems or data. The orchestration layer translates model outputs into validated actions against defined APIs and data sources. The data layer enforces permission boundaries independent of the model's behavior. This design ensures that model behavior cannot bypass access controls or execute unvalidated operations.
-                </p>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80" alt="Secure Data Center">
             </div>
         </div>
     </section>
 
-    <section id="capabilities">
-        <div class="section-content">
-            <h2>Operational Capabilities</h2>
-
-            <p>
-                Phantom AI provides two core capabilities: conversational intelligence for information retrieval and analysis, and autonomous agents for multi-step task execution. Both operate under the same governance model and access the same enterprise data sources through controlled integration points.
-            </p>
-
-            <div class="subsection">
-                <h3>Conversational Intelligence</h3>
-                <p>
-                    Employees interact with enterprise data through natural language. The system retrieves information from connected sources—databases, document repositories, internal applications—synthesizes responses, and presents analysis with citations to source data. Retrieval respects the querying user's access permissions; employees see only what they are authorized to access through existing systems.
-                </p>
+    <section class="benefits" id="benefits">
+        <div class="section-header">
+            <h2>Transform How Your <span class="gradient-text">Organization Works</span></h2>
+            <p>Beyond security — real productivity gains that compound across your entire workforce.</p>
+        </div>
+        <div class="benefits-content">
+            <div class="benefit-block">
+                <div class="benefit-text">
+                    <div class="benefit-number">01</div>
+                    <h3>Your Data Stays Yours</h3>
+                    <p class="benefit-headline">Complete privacy. Zero compromises.</p>
+                    <p>In an age of data breaches and AI companies training on your conversations, we take a different approach: your data never leaves your control. Deploy on your own infrastructure — whether on-premise servers, private cloud, or air-gapped environments. No data is sent to external APIs. No training on your information. No third-party access. Ever.</p>
+                    <ul class="benefit-list">
+                        <li>100% on-premise or private cloud deployment</li>
+                        <li>Zero external API calls for AI processing</li>
+                        <li>SOC 2, HIPAA, and FedRAMP ready</li>
+                        <li>Complete audit trails for compliance</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="subsection">
-                <h3>Autonomous Agents</h3>
-                <p>
-                    Agents execute multi-step workflows on behalf of employees: gathering data from multiple systems, performing analysis, generating artifacts, and taking actions through defined integration points. Agent behavior is deterministic given the same inputs and constraints. Each agent operates within a policy envelope that specifies permitted actions, accessible systems, approval requirements for sensitive operations, and escalation paths.
-                </p>
-                <p>
-                    Agents maintain persistent context, allowing them to develop institutional knowledge within their authorized scope. They can be assigned to roles—executive support, operational monitoring, compliance review—and develop domain expertise through accumulated interaction while remaining constrained by governance policies.
-                </p>
+            <div class="benefit-block reverse">
+                <div class="benefit-text">
+                    <div class="benefit-number">02</div>
+                    <h3>Intelligent Data Access</h3>
+                    <p class="benefit-headline">Ask questions. Get answers. In plain English.</p>
+                    <p>Imagine every employee having instant access to your corporate knowledge — financial reports, operational data, customer history, internal docs — through a simple chat interface. No more hunting through SharePoint. No more "who knows where that file is?" Start with one system or connect everything. Your AI understands context, follows permissions, and delivers precisely what's needed.</p>
+                    <ul class="benefit-list">
+                        <li>Query structured databases with natural language</li>
+                        <li>Search across documents, emails, and knowledge bases</li>
+                        <li>Respect existing access controls and permissions</li>
+                        <li>Start narrow, expand as trust builds</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="subsection">
-                <h3>Enterprise Use Cases</h3>
-                <div class="use-cases">
-                    <div class="use-case">
-                        <h4>Financial & Operational Analysis</h4>
-                        <p>Real-time synthesis across ERP, CRM, and operational databases. Natural language queries against structured data with automatic joins across systems. Anomaly detection and trend analysis with full traceability to source records.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>Compliance & Audit Support</h4>
-                        <p>Automated evidence collection for audit requests. Policy compliance verification against internal documents and communications. Complete audit trails for all AI-assisted decisions and actions.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>Knowledge Retrieval</h4>
-                        <p>Permission-aware search across unstructured documents, emails, and internal knowledge bases. Contextual synthesis that respects information classification and need-to-know boundaries.</p>
-                    </div>
-                    <div class="use-case">
-                        <h4>Workflow Execution</h4>
-                        <p>Multi-step task completion across enterprise systems without external dependencies. Configurable approval workflows for sensitive operations. Integration with existing identity and access management infrastructure.</p>
-                    </div>
+            <div class="benefit-block">
+                <div class="benefit-text">
+                    <div class="benefit-number">03</div>
+                    <h3>Agents That Act</h3>
+                    <p class="benefit-headline">Beyond chat. AI that actually does the work.</p>
+                    <p>Traditional chatbots answer questions. Agents complete tasks. They draft reports from your data. They prepare meeting briefs by pulling relevant context. They monitor systems and alert the right people. They don't just understand your business — they participate in it. With configurable approval workflows, you stay in control while multiplying what your team can accomplish.</p>
+                    <ul class="benefit-list">
+                        <li>Automate repetitive knowledge work</li>
+                        <li>Connect to your existing tools and systems</li>
+                        <li>Multi-step workflows with human checkpoints</li>
+                        <li>Learn and improve from every interaction</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="benefit-block reverse">
+                <div class="benefit-text">
+                    <div class="benefit-number">04</div>
+                    <h3>A Digital Assistant for Everyone</h3>
+                    <p class="benefit-headline">Every employee. Personal AI. Focused productivity.</p>
+                    <p>What if every person in your organization had a brilliant, tireless assistant who knew the company inside out? One that handles the busywork so humans can focus on what matters most — creative problem-solving, relationship building, strategic thinking. Your top performers didn't get where they are by formatting spreadsheets. Give everyone that same leverage.</p>
+                    <ul class="benefit-list">
+                        <li>Personalized to each role and workflow</li>
+                        <li>Handles scheduling, prep work, and follow-ups</li>
+                        <li>Surfaces relevant information proactively</li>
+                        <li>Scales expertise across the organization</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="deployment">
-        <div class="section-content">
-            <h2>Deployment Model Comparison</h2>
-
-            <p>
-                The decision to deploy AI infrastructure on-premise versus consuming cloud-hosted AI services involves tradeoffs across data control, operational dependency, governance capability, and long-term strategic positioning. The following comparison addresses these dimensions factually.
-            </p>
-
-            <div class="comparison">
-                <table>
-                    <tr>
-                        <th>Dimension</th>
-                        <th>On-Premise (Phantom AI)</th>
-                        <th>Cloud-Hosted AI / API Services</th>
-                    </tr>
-                    <tr>
-                        <td><strong>Data Exposure</strong></td>
-                        <td>All data remains within customer infrastructure. No external transmission.</td>
-                        <td>Queries and context transmitted to third-party infrastructure. Subject to provider data handling policies.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Model Training</strong></td>
-                        <td>Models are static deployments. No training on customer data.</td>
-                        <td>Varies by provider. Some use customer data for model improvement unless explicitly opted out.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Governance</strong></td>
-                        <td>Full control over access policies, audit logging, and data retention. Integrated with existing enterprise IAM.</td>
-                        <td>Limited to provider-offered controls. Audit capabilities constrained by API boundaries.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Availability</strong></td>
-                        <td>Independent of external service availability. Operates during network isolation.</td>
-                        <td>Dependent on provider uptime and network connectivity.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Vendor Dependency</strong></td>
-                        <td>Infrastructure owned. Can modify, extend, or migrate without provider involvement.</td>
-                        <td>Operational dependency on provider. Subject to pricing changes, feature deprecation, and terms modifications.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Cost Structure</strong></td>
-                        <td>Capital expenditure for infrastructure. Predictable operating costs independent of usage volume.</td>
-                        <td>Variable costs based on API consumption. Scales with usage but less predictable at enterprise scale.</td>
-                    </tr>
-                </table>
+    <section class="security" id="security">
+        <div class="security-content">
+            <div class="security-text">
+                <h2>Security Isn't a Feature. <span class="gradient-text">It's the Foundation.</span></h2>
+                <p>Built from the ground up for organizations where data sovereignty isn't optional.</p>
+                <ul class="security-list">
+                    <li><span class="check">✓</span> End-to-end encryption at rest and in transit (AES-256, TLS 1.3)</li>
+                    <li><span class="check">✓</span> Hardware Security Module (HSM) integration for credential management</li>
+                    <li><span class="check">✓</span> Air-gapped deployment options for classified environments</li>
+                    <li><span class="check">✓</span> SAML/OIDC SSO with your existing identity provider</li>
+                    <li><span class="check">✓</span> SOC 2 Type II, HIPAA, FedRAMP ready architectures</li>
+                    <li><span class="check">✓</span> Penetration tested quarterly by independent security firms</li>
+                </ul>
             </div>
-
-            <div class="subsection">
-                <h3>Infrastructure Options</h3>
-                <p>
-                    Phantom AI supports deployment across multiple infrastructure configurations: dedicated on-premise servers with GPU acceleration, private cloud environments (AWS VPC, Azure Private Link, GCP VPC Service Controls), and fully air-gapped installations for classified or regulated environments. For organizations seeking managed infrastructure without external data exposure, we offer deployment on Amazon Bedrock within customer-controlled AWS accounts, maintaining data sovereignty while reducing operational overhead.
-                </p>
+            <div class="security-image">
+                <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80" alt="Security Infrastructure">
             </div>
         </div>
     </section>
 
-    <section id="team">
-        <div class="section-content">
-            <h2>Leadership</h2>
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="images/david-tedesco.jpg" alt="David Tedesco">
-                    <h4>David Tedesco</h4>
-                    <div class="role">Co-Founder & CEO</div>
-                    <p>Founder & CEO of Outlier. Harvard Business School. 25 years building and acquiring companies across healthcare, aerospace, and technology sectors.</p>
-                </div>
-                <div class="team-member">
-                    <img src="images/louis-aaron.jpg" alt="Louis Aaron">
-                    <h4>Louis Aaron</h4>
-                    <div class="role">Co-Founder & CTO</div>
-                    <p>Founder of BoreDM. Princeton CS & Operations Research. Former Boring Company, BCG. Built enterprise SaaS platforms trusted by state DOTs nationwide.</p>
-                </div>
+    <section class="infrastructure" id="infrastructure">
+        <div class="section-header">
+            <h2>Deploy <span class="gradient-text">Your Way</span></h2>
+            <p>Full flexibility to match your security posture and infrastructure preferences.</p>
+        </div>
+        <div class="infra-cards">
+            <div class="infra-card">
+                <img src="images/server.png" alt="On-Premise">
+                <h3>Fully On-Premise</h3>
+                <p>Deploy on your hardware. Your data center. Your rules. Support for NVIDIA, AMD, and Apple Silicon clusters.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+            <div class="infra-card">
+                <img src="images/aws.png" alt="Amazon AWS Bedrock">
+                <h3>Amazon AWS Bedrock</h3>
+                <p>Leverage Amazon's secure AI infrastructure within your VPC. Private endpoints. No data sharing. Full AWS compliance inheritance.</p>
+                <a href="#" class="btn btn-outline">Learn More</a>
             </div>
         </div>
     </section>
 
-    <section class="cta-section" id="contact">
-        <h2>Evaluate the Architecture</h2>
-        <p>
-            We offer private technical briefings for executives evaluating enterprise AI infrastructure. Sessions include architecture review, security assessment, and deployment planning.
-        </p>
-        <a href="mailto:contact@phantom.ai" class="btn btn-primary">Request Technical Briefing</a>
+    <section class="team" id="team">
+        <div class="section-header">
+            <h2>Built by <span class="gradient-text">Industry Veterans</span></h2>
+            <p>Decades of combined experience in enterprise software, AI, and security.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="images/david-tedesco.jpg" alt="David Tedesco">
+                <h3>David Tedesco</h3>
+                <div class="role">Co-Founder & CEO</div>
+                <p>Founder & CEO of Outlier. Harvard Business School. 25+ years building companies across healthcare, aerospace, and technology.</p>
+            </div>
+            <div class="team-member">
+                <img src="images/louis-aaron.jpg" alt="Louis Aaron">
+                <h3>Louis Aaron</h3>
+                <div class="role">Co-Founder & CTO</div>
+                <p>Founder of BoreDM. Princeton CS & Operations Research. Former Boring Company, BCG. Built enterprise SaaS trusted by state DOTs.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>Ready to Take <span class="gradient-text">Control</span>?</h2>
+        <p>See how PhantomAI can transform your enterprise while keeping your data exactly where it belongs.</p>
+        <a href="mailto:hello@phantom.ai" class="btn btn-primary">Request a Demo</a>
     </section>
 
     <footer>
-        <p>© 2026 Phantom AI, Inc.</p>
+        <p>© 2026 PhantomAI, Inc. All rights reserved. | <a href="#" style="color: #71717a;">Privacy</a> | <a href="#" style="color: #71717a;">Terms</a> | <a href="#" style="color: #71717a;">Security</a></p>
     </footer>
 </body>
 </html>
